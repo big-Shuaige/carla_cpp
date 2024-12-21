@@ -6,7 +6,6 @@ using UnrealBuildTool;
 
 public class Carla : ModuleRules
 {
-
   // 控制是否启用不同模块的布尔值
   bool UsingCarSim = false;
   bool UsingChrono = false;
@@ -32,7 +31,7 @@ public class Carla : ModuleRules
       bEnableExceptions = true;
     }
 
-     // 读取配置文件，检查是否启用各种模块
+    // 读取配置文件，检查是否启用各种模块
     string CarlaPluginPath = Path.GetFullPath( ModuleDirectory );
     string ConfigDir =  Path.GetFullPath(Path.Combine(CarlaPluginPath, "../../../../Config/"));
     string OptionalModulesFile = Path.Combine(ConfigDir, "OptionalModules.ini");
@@ -43,34 +42,33 @@ public class Carla : ModuleRules
     {
       if (line.Contains("CarSim ON"))
       {
-      
-      	// 检查是否启用 CarSim
+        // 检查是否启用 CarSim
         Console.WriteLine("Enabling carsim");
         UsingCarSim = true;
-        PublicDefinitions.Add("WITH_CARSIM");
-        PrivateDefinitions.Add("WITH_CARSIM");
+        PublicDefinitions.Add("WITH_CARSIM"); // 向公共定义添加WITH_CARSIM
+        PrivateDefinitions.Add("WITH_CARSIM"); // 向私有定义添加WITH_CARSIM
       }
       if (line.Contains("Chrono ON"))
       {
         Console.WriteLine("Enabling chrono");
         UsingChrono = true;
-        PublicDefinitions.Add("WITH_CHRONO");
-        PrivateDefinitions.Add("WITH_CHRONO");
+        PublicDefinitions.Add("WITH_CHRONO"); // 向公共定义添加WITH_CHRONO
+        PrivateDefinitions.Add("WITH_CHRONO"); // 向私有定义添加WITH_CHRONO
       }
       if (line.Contains("Pytorch ON"))
       {
         Console.WriteLine("Enabling pytorch");
         UsingPytorch = true;
-        PublicDefinitions.Add("WITH_PYTORCH");
-        PrivateDefinitions.Add("WITH_PYTORCH");
+        PublicDefinitions.Add("WITH_PYTORCH"); // 向公共定义添加WITH_PYTORCH
+        PrivateDefinitions.Add("WITH_PYTORCH"); // 向私有定义添加WITH_PYTORCH
       }
 
       if (line.Contains("Ros2 ON"))
       {
         Console.WriteLine("Enabling ros2");
         UsingRos2 = true;
-        PublicDefinitions.Add("WITH_ROS2");
-        PrivateDefinitions.Add("WITH_ROS2");
+        PublicDefinitions.Add("WITH_ROS2"); // 向公共定义添加WITH_ROS2
+        PrivateDefinitions.Add("WITH_ROS2"); // 向私有定义添加WITH_ROS2
       }
     }
 
